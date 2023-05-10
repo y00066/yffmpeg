@@ -1,0 +1,20 @@
+{
+  "name": "yffmpeg",
+  "version": "0.1.0",
+  "description": "Ffmpeg wrapper",
+  "main": "lib/yffmpeg.js",
+  "scripts": {},
+  "keywords": [
+    "ffmpeg",
+    "yffmpeg",
+    "stream",
+    "wrapper",
+    "codec",
+    "transcode",
+    "audio",
+    "video",
+    "node"
+  ],
+  "author": "y00066",
+  "license": "MIT"
+}
