@@ -119,6 +119,6 @@ Available event:
 -   `flog` - ffmpeg log
 -   `finish` - process finished
 
-#### execute()
+#### run()
 
 Start ffmpeg process.
