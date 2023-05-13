@@ -25,10 +25,10 @@ const writable = fs.createWriteStream("./output.ogg");
 
 new Yffmpeg()
     .input(readable)
-    .output(writable, { "-f": "ogg" })
+    .output(writable, ["-f", "ogg"])
     .on("error", console.log)
-    .on("flog", console.log)
-    .on("finish", () => console.log("process finished"))
+    .on("progress", console.log)
+    .on("end", console.log)
     .run();
 ```
 
@@ -42,12 +42,12 @@ const audioOutput1 = "./output.wav";
 const audioOutput2 = "./output.flac";
 
 new Yffmpeg()
-    .input(audioInput)
-    .output(audioOutput1)
-    .output(audioOutput2)
+    .input(audioInput, ["-f", "mp3"])
+    .output(audioOutput1, ["-c:a", "pcm_s16le"])
+    .output(audioOutput2, ["-c:a", "flac"])
     .on("error", console.log)
-    .on("flog", console.log)
-    .on("finish", () => console.log("process finished"))
+    .on("progress", console.log)
+    .on("end", console.log)
     .run();
 ```
 
@@ -70,10 +70,10 @@ pass.pipe(writable);
 new Yffmpeg()
     .input(readable1)
     .input(readable2)
-    .output(pass, { "-f": "mp3", "-filter_complex": "amix=inputs=2:duration=longest:dropout_transition=2" })
+    .output(pass, ["-f", "mp3", "-filter_complex", "amix=inputs=2:duration=longest:dropout_transition=2"])
     .on("error", console.log)
-    .on("flog", console.log)
-    .on("finish", () => console.log("process finished"))
+    .on("progress", console.log)
+    .on("end", console.log)
     .run();
 ```
 
@@ -89,11 +89,21 @@ const audioOutput = "./audio.mp3";
 
 new Yffmpeg()
     .input(audioUrl)
-    .output(audioOutput, { "-loglevel": "error" })
+    .output(audioOutput)
+    .on("progress", console.log)
     .on("error", console.log)
-    .on("flog", console.log)
-    .on("finish", () => console.log("process finished"))
+    .on("end", console.log)
     .run();
+```
+
+---
+
+**Manually setting the binary path for FFmpeg:**
+
+```js
+const ffmpegBinaryPath = "/usr/bin/ffmpeg";
+
+new Yffmpeg(ffmpegBinaryPath);
 ```
 
 ## API
@@ -101,12 +111,12 @@ new Yffmpeg()
 #### input(inp, [options])
 
 -   `inp`: _string_ | _stream.Readable_ | _stream.Duplex_ | _stream.PassThrough_
--   `options`: _Object_ - FFmpeg input options
+-   `options`: _Array<string | number>_ - FFmpeg input options
 
 #### output(outp, [options])
 
 -   `outp`: _string_ | _stream.Duplex_ | _stream.PassThrough_ | _stream.Writable_
--   `options`: _Object_ - FFmpeg output options
+-   `options`: _Array<string | number>_ - FFmpeg output options
 
 #### on(event, fn)
 
@@ -115,9 +125,9 @@ new Yffmpeg()
 
 Available event:
 
--   `error` - process error
--   `flog` - ffmpeg log
--   `finish` - process finished
+-   error
+-   progress
+-   end
 
 #### run()
 
