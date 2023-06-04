@@ -1,0 +1,28 @@
+{
+  "name": "yffmpeg",
+  "version": "3.0.0",
+  "description": "Simple ffmpeg API for nodejs",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "fmt": "prettier -w src/",
+    "build:pkg": "tsc",
+    "build:docs": "typedoc",
+    "build:all": "tsc && typedoc"
+  },
+  "author": "y00066",
+  "license": "MIT",
+  "keywords": [
+    "ffmpeg",
+    "stream",
+    "api",
+    "node",
+    "codec"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "prettier": "^2.8.8",
+    "typedoc": "^0.24.7",
+    "typescript": "^5.0.4"
+  }
+}

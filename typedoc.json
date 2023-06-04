@@ -1,0 +1,10 @@
+{
+  "entryPoints": ["./src/index.ts"],
+  "excludePrivate": true,
+  "excludeExternals": true,
+  "includeVersion": true,
+  "out": "docs",
+  "name": "node-yffmpeg",
+  "darkHighlightTheme": "monokai",
+  "lightHighlightTheme": "monokai"
+}
