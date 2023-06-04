@@ -1,6 +1,6 @@
 {
   "name": "yffmpeg",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Simple ffmpeg API for nodejs",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

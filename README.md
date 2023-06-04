@@ -61,6 +61,27 @@ new FFmpeg()
     .run()
 ```
 
+**Multiple Input/Output:**
+
+```js
+const { FFmpeg } = require("yffmpeg")
+
+new FFmpeg()
+  .setInputOptions()
+  .setInput()
+  .setInputOptions()
+  .setInput()
+  // and so on
+
+  .setOutputOptions()
+  .setOutput()
+  .setOutputOptions()
+  .setOutput()
+  // and so on
+
+  .run()
+```
+
 **Listening to the event:**
 
 ```js
